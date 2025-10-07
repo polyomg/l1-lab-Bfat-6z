@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi Tiết Nhân Viên</title>
+    <style>
+        section { max-width: 400px; margin: 20px auto; font-family: Arial, sans-serif; }
+        img { display: block; margin-bottom: 10px; }
+        label { font-weight: bold; margin-right: 10px; }
+        hr { margin: 10px 0; }
+    </style>
+</head>
+<body>
+<section>
+    <img th:src="@{|/photos/${staff.photo}|}" height="200" width="200" alt="Ảnh nhân viên">
+    <hr>
+    <label>Email:</label><span th:text="${staff.id}"></span><hr>
+    <label>Họ và tên:</label><span th:text="${#strings.capitalizeWords(staff.fullname)}"></span><hr>
+    <label>Giới tính:</label><span th:text="${staff.gender ? 'Nam' : 'Nữ'}"></span><hr>
+    <label>Ngày sinh:</label><span th:text="${#dates.format(staff.birthday, 'dd-MM-yyyy')}"></span><hr>
+    <label>Cấp bậc:</label><span th:switch="${staff.level}">
+            <span th:case="0">Úy</span>
+            <span th:case="1">Tá</span>
+            <span th:case="2">Tướng</span>
+            <span th:case="*">Chưa có</span>
+        </span><hr>
+    <label>Lương:</label><span>$<span th:text="${#numbers.formatDecimal(staff.salary, 0, 'COMMA', 2, 'POINT')}"></span></span><hr>
+</section>
+</body>
+</html>

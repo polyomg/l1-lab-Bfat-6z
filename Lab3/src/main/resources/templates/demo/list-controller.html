@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Staff Selection Controls</title>
+</head>
+<body>
+<!-- Dropdown for selecting staff -->
+<h3>Fill to SelectBox</h3>
+<select name="cbo">
+  <option th:each="staff : ${list}" th:value="${staff.id}" th:text="${staff.fullname}"></option>
+</select>
+
+<!-- Radio button group for selecting staff -->
+<h3>Create Radio Button Group</h3>
+<div th:each="staff : ${list}">
+  <label>
+    <input type="radio" name="rdo" th:value="${staff.id}" />
+    <span th:text="${staff.fullname}"></span>
+  </label>
+  <br />
+</div>
+</body>
+</html>

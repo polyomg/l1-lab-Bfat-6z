@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh Sách Nhân Viên</title>
+  <style>
+    section { max-width: 600px; margin: 20px auto; font-family: Arial, sans-serif; }
+    img { vertical-align: middle; margin-right: 10px; }
+    .staff-item { margin-bottom: 10px; }
+    hr { margin: 10px 0; }
+  </style>
+</head>
+<body>
+<!-- Danh sách nhân viên -->
+<section th:each="staff, st : ${list}" class="staff-item">
+  <img th:src="@{|/photos/${staff.photo}|}" height="40" alt="Ảnh nhân viên" />
+  <span th:text="${st.count + '.'}"></span>
+  <span th:text="${#strings.capitalizeWords(staff.fullname)}"></span>,
+  $<span th:text="${#numbers.formatDecimal(staff.salary, 0, 'COMMA', 2, 'POINT')}"></span>
+  <hr th:unless="${st.last}" />
+</section>
+</body>
+</html>
