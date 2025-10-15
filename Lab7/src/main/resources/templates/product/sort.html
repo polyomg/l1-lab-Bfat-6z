@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Sort Products</title></head>
+<body>
+<h2>SORT PRODUCTS</h2>
+<table border="1" style="width:100%">
+  <tr><th>Id</th><th>Name</th><th>Price</th><th>Date</th></tr>
+  <tr th:each="item : ${items}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.name}"></td>
+    <td th:text="${item.price}"></td>
+    <td th:text="${#dates.format(item.createDate, 'yyyy-MM-dd')}"></td>
+  </tr>
+</table>
+</body>
+</html>
